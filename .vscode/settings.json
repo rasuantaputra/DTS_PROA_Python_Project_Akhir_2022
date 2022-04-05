@@ -1,0 +1,7 @@
+{
+    // "window.zoomLevel": 0
+    "editor.fontSize": 20,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Atom One Dark"
+
+}
