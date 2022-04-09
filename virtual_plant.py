@@ -17,9 +17,9 @@ def tank_image():
     # Insert tank image
     frame.create_image(320,360, image=img)
     # valve 1 (x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)
-    # frame.create_polygon(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)
+    frame.create_polygon(113, 270, 113, 220, 199, 270, 199, 220, fill='lime')
     # valve 2 (x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)
-    # frame.create_polygon()
+    # frame.create_polygon([, ], [, ], [, ], [, ], fill='lime')
     
 # liquid = (level - x)/level
 def liquid(level=310):
