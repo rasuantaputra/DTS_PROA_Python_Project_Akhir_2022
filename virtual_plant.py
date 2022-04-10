@@ -14,10 +14,12 @@ def mouse_motion_coordinate(event):
     print('{}, {}'.format(x, y))
 
 def tank_image():
+    a = 320
+    b = 360
     # Insert tank image
-    frame.create_image(320,360, image=img)
+    frame.create_image(a,b, image=img)
     # valve 1 (x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)
-    frame.create_polygon(113, 270, 113, 220, 199, 270, 199, 220, fill='lime')
+    frame.create_polygon(a-207, b-90, a-207, b-140, a-121, b-90, a-121, b-140, fill='lime')
     # valve 2 (x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)
     # frame.create_polygon([, ], [, ], [, ], [, ], fill='lime')
     
