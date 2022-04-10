@@ -10,9 +10,10 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationTool
 
 main_window = tkinter.Tk()
 main_window.title('Tugas DTS Kominfo 2022')
+main_window.resizable(0,0)
 
 # Virtual plant frame size
-frame = tkinter.Canvas(main_window, bg="white", height=700, width=1365)
+frame = tkinter.Canvas(main_window, bg="white", height=700, width=1000)
 # take Tank.png image
 img = tkinter.PhotoImage(file="img\Tank.png")
 
@@ -21,9 +22,10 @@ def mouse_motion_coordinate(event):
     x, y = event.x, event.y
     print('{}, {}'.format(x, y))
 
-def tank(level=310):
-    x = 320
-    y = 360
+def tank(level=141):
+    # Tank coordinate
+    x = 295
+    y = 190
     # Insert tank image
     frame.create_image(x,y, image=img)
     # valve 1 (x1, y1, x2, y2, x3, y3, x4, y4, x5, y5)
@@ -43,18 +45,17 @@ def graph():
     # Plot graph
     plot1.grid(True)
     plot1.set_title('Response Graph')
-    plot1.set_xlabel('time (sec)')
+    plot1.set_xlabel('time (min)')
     plot1.set_ylabel('Process Value (PV)')
     plot1.plot([1, 2, 3, 4], [5, 6, 7, 9])
-    # Embedding in canvas or frame
+    # Embedding in canvas
     canvas_graph = tkinter.Canvas(main_window, bg='white')
     # frame_graph.place(relx=0.4,rely=0.2,relwidth=0.4,relheight=0.6,anchor='e')
-    canvas_graph.place(x=0,y=0, width=400, height=200)
+    canvas_graph.place(x=580,y=1, width=450, height=400)
 
     canvasGrafik = FigureCanvasTkAgg(figure, canvas_graph)
     canvasGrafik.get_tk_widget().place(relheight=1,relwidth=1)
     canvasGrafik.draw()
-
 
 # =========try block========
 tank()
