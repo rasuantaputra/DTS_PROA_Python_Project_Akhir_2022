@@ -2,6 +2,7 @@ import tkinter
 from venv import create
 
 main_window = tkinter.Tk()
+main_window.title('Tugas DTS Kominfo 2022')
 
 # Virtual plant frame size
 frame = tkinter.Canvas(main_window, bg="white", height=600, width=1000)
@@ -37,5 +38,4 @@ frame.pack()
 
 # Activate mouse corrdinate
 main_window.bind('<Motion>', mouse_motion_coordinate)
-main_window.title('Tugas DTS Kominfo 2022')
 main_window.mainloop()
