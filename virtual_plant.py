@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 
-
-main_window = tkinter.Tk()
-main_window.title('Tugas DTS Kominfo 2022')
-main_window.resizable(0,0)
+def activate1():
+    main_window = tkinter.Tk()
+    main_window.title('Tugas DTS Kominfo 2022')
+    main_window.resizable(0,0)
 
 # Virtual plant frame size
 frame = tkinter.Canvas(main_window, bg="white", height=700, width=1000)
@@ -37,7 +37,6 @@ def tank(level=141):
     # frame.create_rectangle(174, level, 383, 518, fill="blue", outline = 'blue')
     frame.create_rectangle(x-146, level, x+63, y+158, fill="blue", outline = 'blue')
     
-
 def graph():
     # Figure size
     figure = Figure()
@@ -57,12 +56,16 @@ def graph():
     canvasGrafik.get_tk_widget().place(relheight=1,relwidth=1)
     canvasGrafik.draw()
 
+def activate2():
+    frame.pack()
+    # Activate mouse corrdinate
+    main_window.bind('<Motion>', mouse_motion_coordinate)
+    main_window.mainloop()
+
+
 # =========try block========
+activate1()
 tank()
 graph()
+activate2()
 # ==========================
-frame.pack()
-
-# Activate mouse corrdinate
-main_window.bind('<Motion>', mouse_motion_coordinate)
-main_window.mainloop()
