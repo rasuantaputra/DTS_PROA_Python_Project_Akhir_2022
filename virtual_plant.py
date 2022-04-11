@@ -7,10 +7,10 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 
-def activate1():
-    main_window = tkinter.Tk()
-    main_window.title('Tugas DTS Kominfo 2022')
-    main_window.resizable(0,0)
+
+main_window = tkinter.Tk()
+main_window.title('Tugas DTS Kominfo 2022')
+main_window.resizable(0,0)
 
 # Virtual plant frame size
 frame = tkinter.Canvas(main_window, bg="white", height=700, width=1000)
@@ -64,7 +64,6 @@ def activate2():
 
 
 # =========try block========
-activate1()
 tank()
 graph()
 activate2()
