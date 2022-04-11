@@ -13,7 +13,7 @@ main_window.title('Tugas DTS Kominfo 2022')
 main_window.resizable(0,0)
 
 # Virtual plant frame size
-frame = tkinter.Canvas(main_window, bg="white", height=700, width=1000)
+frame = tkinter.Canvas(main_window, bg='#2596be', height=600, width=1000)
 # take Tank.png image
 img = tkinter.PhotoImage(file="img\Tank.png")
 
@@ -56,7 +56,21 @@ def graph():
     canvasGrafik.get_tk_widget().place(relheight=1,relwidth=1)
     canvasGrafik.draw()
 
-def activate2():
+def control_panel():
+    frame.create_rectangle(0, 401, 1009, 603 , fill='#074447', outline = '#074447')
+    # Make start button
+    start_button = tkinter.Button(main_window, text='Start', font='sans 16 bold')
+    start_button.place(x=163 , y=408,relwidth=0.3,relheight=0.1,anchor='n')
+    # Make pause button
+    pause_button = tkinter.Button(main_window, text='Pause', font='sans 16 bold')
+    pause_button.place(x=163 , y=473,relwidth=0.3,relheight=0.1,anchor='n')
+    # Make reset button
+    reset_button = tkinter.Button(main_window, text='Reset', font='sans 16 bold')
+    reset_button.place(x=163 , y=538,relwidth=0.3,relheight=0.1,anchor='n')
+
+
+
+def activate():
     frame.pack()
     # Activate mouse corrdinate
     main_window.bind('<Motion>', mouse_motion_coordinate)
@@ -66,5 +80,6 @@ def activate2():
 # =========try block========
 tank()
 graph()
-activate2()
+control_panel()
+activate()
 # ==========================
