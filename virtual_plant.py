@@ -44,7 +44,7 @@ def graph():
     # Plot graph
     plot1.grid(True)
     plot1.set_title('Response Graph')
-    plot1.set_xlabel('time (min)')
+    plot1.set_xlabel('time (Sec)')
     plot1.set_ylabel('Process Value (PV)')
     plot1.plot([1, 2, 3, 4], [5, 6, 7, 9])
     # Embedding in canvas
@@ -67,6 +67,13 @@ def control_panel():
     # Make reset button
     reset_button = tkinter.Button(main_window, text='Reset', font='sans 16 bold')
     reset_button.place(x=163 , y=538,relwidth=0.3,relheight=0.1,anchor='n')
+    # Make maxial debit
+    debit = tkinter.Label(bg='#074447', text='Debit Input', fg='white', font='sans 16 bold')
+    debit.place(x=400,y=408,relwidth=0.2,relheight=0.125,anchor='n')
+    debit = tkinter.Entry(main_window)
+    debit.place(relx=0.5,rely=0.4,relwidth=0.6,relheight=0.08,anchor='n')
+    debit.insert(0,35)
+
 
 
 
