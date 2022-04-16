@@ -1,9 +1,9 @@
 import tkinter
-
-from pip import main
+from tkinter.messagebox import YESNOCANCEL
 import numpy as np
 import matplotlib.pyplot as plt
 
+from pip import main
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 
@@ -38,9 +38,11 @@ def tank(level=141):
     # Make linquid inside tank
     # liquid = (level - x)/level
     # frame.create_rectangle(174, level, 383, 518, fill="blue", outline = 'blue')
-    frame.create_rectangle(x-146, level, x+63, y+158, fill="blue", outline = 'blue')
+    frame.create_rectangle(358, 348, 150, level, fill="blue", outline = 'blue')
+
+
+def graph(time, pv):
     
-def graph():
     # Figure size
     figure = Figure()
     plot1 = figure.add_subplot(111)
@@ -49,10 +51,9 @@ def graph():
     plot1.set_title('Response Graph')
     plot1.set_xlabel('time (Sec)')
     plot1.set_ylabel('Process Value (PV)')
-    plot1.plot([1, 2, 3, 4], [5, 6, 7, 9])
+    plot1.plot(time, pv)
     # Embedding in canvas
     canvas_graph = tkinter.Canvas(main_window, bg='white')
-    # frame_graph.place(relx=0.4,rely=0.2,relwidth=0.4,relheight=0.6,anchor='e')
     canvas_graph.place(x=580,y=1, width=450, height=400)
 
     canvasGrafik = FigureCanvasTkAgg(figure, canvas_graph)
@@ -62,6 +63,7 @@ def graph():
 def control_panel():
     frame.create_rectangle(0, 401, 1009, 603 , fill='#074447', outline = '#074447')
 
+def debit_input():
     # Make entry debit
     debit = tkinter.Label(bg='#074447', text='Debit Input      :', fg='white', font='sans 16 bold')
     debit.place(x=320,y=404)
@@ -69,6 +71,9 @@ def control_panel():
     debit.place(x=479 , y=411)
     debit.insert(0,69)
 
+    return debit
+
+def maximum_liquid_lvl_input():
     # Make entry maximum lvl
     maximum_liquid_lvl = tkinter.Label(bg='#074447', text='Max Liquid lvl :', fg='white', font='sans 16 bold')
     maximum_liquid_lvl.place(x=320,y=438)
@@ -76,6 +81,9 @@ def control_panel():
     maximum_liquid_lvl.place(x=479 , y=445)
     maximum_liquid_lvl.insert(0,69)
 
+    return maximum_liquid_lvl
+
+def gravitation_input():
     # Make entry gravitation
     gravitation = tkinter.Label(bg='#074447', text='Gravitation     :', fg='white', font='sans 16 bold')
     gravitation.place(x=320,y=472)
@@ -83,6 +91,9 @@ def control_panel():
     gravitation.place(x=479 , y=479)
     gravitation.insert(0,69)
 
+    return gravitation
+
+def valve1_area_input():
     # Make entry q1 pipe diameter
     valve1_area = tkinter.Label(bg='#074447', text='Valve 1 D        :', fg='white', font='sans 16 bold')
     valve1_area.place(x=320,y=506)
@@ -90,6 +101,9 @@ def control_panel():
     valve1_area = tkinter.Spinbox(main_window, values=(10, 20, 30, 40, 50, 60, 70, 80, 90, 100))
     valve1_area.place(x=479 , y=513)
 
+    return valve1_area
+
+def tank_area_input():
     # Make tank area diameter
     tank_area = tkinter.Label(bg='#074447', text='Tank Area      :', fg='white', font='sans 16 bold')
     tank_area.place(x=320,y=540)
@@ -97,17 +111,67 @@ def control_panel():
     tank_area.place(x=479 , y=547)
     tank_area.insert(0,69)
 
+    return tank_area
+
+def proportional_input():
+    # Make proportional controll input
+    proportional = tkinter.Label(bg='#074447', text='Proportional (P) :', fg='white', font='sans 16 bold')
+    proportional.place(x=650,y=404)
+    proportional = tkinter.Entry(main_window)
+    proportional.place(x=828 , y=411)
+    proportional.insert(0,69)
+
+    return proportional
+
+def integral_input():
+    # Make integral controll input
+    integral = tkinter.Label(bg='#074447', text='Integral (I)           :', fg='white', font='sans 16 bold')
+    integral.place(x=650,y=438)
+    integral = tkinter.Entry(main_window)
+    integral.place(x=828 , y=445)
+    integral.insert(0,69)
+
+    return integral
+
+def derivative_input():
+    # Make derivative controll input
+    derivative = tkinter.Label(bg='#074447', text='Derivative (D)     :', fg='white', font='sans 16 bold')
+    derivative.place(x=650,y=472)
+    derivative = tkinter.Entry(main_window)
+    derivative.place(x=828 , y=479)
+    derivative.insert(0,69)
+
+    return derivative
+
+def start_button():
     # Make start button
     start_button = tkinter.Button(main_window, text='Start', font='sans 16 bold')
     start_button.place(x=163 , y=408,relwidth=0.3,relheight=0.1,anchor='n')
 
+    return start_button
+
+def pause_button():
     # Make pause button
     pause_button = tkinter.Button(main_window, text='Pause', font='sans 16 bold')
     pause_button.place(x=163 , y=473,relwidth=0.3,relheight=0.1,anchor='n')
 
+    return pause_button
+
+def reset_button():
     # Make reset button
     reset_button = tkinter.Button(main_window, text='Reset', font='sans 16 bold')
     reset_button.place(x=163 , y=538,relwidth=0.3,relheight=0.1,anchor='n')
+
+    return reset_button
+
+def tunning_button():
+    # Make tunnig button
+    tunning_button = tkinter.Button(main_window, text='Tune', font='sans 16 bold')
+    tunning_button.place(x=803 , y=510,relwidth=0.3,relheight=0.1,anchor='n')
+
+    return tunning_button
+
+
 
 def activate():
     frame.pack()
@@ -118,8 +182,16 @@ def activate():
 
 # =========try block========
 start()
-tank()
-graph()
-control_panel()
-activate()
+# tank()
+# graph()
+# control_panel()
+# debit_input()
+# maximum_liquid_lvl_input()
+# gravitation_input()
+# valve1_area_input()
+# tank_area_input()
+# start_button()
+# pause_button()
+# reset_button()
+# activate()
 # ==========================
