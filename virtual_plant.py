@@ -58,24 +58,53 @@ def graph():
 
 def control_panel():
     frame.create_rectangle(0, 401, 1009, 603 , fill='#074447', outline = '#074447')
+
+    # Make entry debit
+    debit = tkinter.Label(bg='#074447', text='Debit Input      :', fg='white', font='sans 16 bold')
+    debit.place(x=320,y=404)
+    debit = tkinter.Entry(main_window)
+    debit.place(x=479 , y=411)
+    debit.insert(0,69)
+
+    # Make entry maximum lvl
+    maximum_liquid_lvl = tkinter.Label(bg='#074447', text='Max Liquid lvl :', fg='white', font='sans 16 bold')
+    maximum_liquid_lvl.place(x=320,y=438)
+    maximum_liquid_lvl = tkinter.Entry(main_window)
+    maximum_liquid_lvl.place(x=479 , y=445)
+    maximum_liquid_lvl.insert(0,69)
+
+    # Make entry gravitation
+    gravitation = tkinter.Label(bg='#074447', text='Gravitation     :', fg='white', font='sans 16 bold')
+    gravitation.place(x=320,y=472)
+    gravitation = tkinter.Entry(main_window)
+    gravitation.place(x=479 , y=479)
+    gravitation.insert(0,69)
+
+    # Make entry q1 pipe diameter
+    valve1_area = tkinter.Label(bg='#074447', text='Valve 1 D        :', fg='white', font='sans 16 bold')
+    valve1_area.place(x=320,y=506)
+    valve1_area = tkinter.Entry(main_window)
+    valve1_area = tkinter.Spinbox(main_window, values=(10, 20, 30, 40, 50, 60, 70, 80, 90, 100))
+    valve1_area.place(x=479 , y=513)
+
+    # Make tank area diameter
+    tank_area = tkinter.Label(bg='#074447', text='Tank Area      :', fg='white', font='sans 16 bold')
+    tank_area.place(x=320,y=540)
+    tank_area = tkinter.Entry(main_window)
+    tank_area.place(x=479 , y=547)
+    tank_area.insert(0,69)
+
     # Make start button
     start_button = tkinter.Button(main_window, text='Start', font='sans 16 bold')
     start_button.place(x=163 , y=408,relwidth=0.3,relheight=0.1,anchor='n')
+
     # Make pause button
     pause_button = tkinter.Button(main_window, text='Pause', font='sans 16 bold')
     pause_button.place(x=163 , y=473,relwidth=0.3,relheight=0.1,anchor='n')
+
     # Make reset button
     reset_button = tkinter.Button(main_window, text='Reset', font='sans 16 bold')
     reset_button.place(x=163 , y=538,relwidth=0.3,relheight=0.1,anchor='n')
-    # Make maxial debit
-    debit = tkinter.Label(bg='#074447', text='Debit Input', fg='white', font='sans 16 bold')
-    debit.place(x=400,y=408,relwidth=0.2,relheight=0.125,anchor='n')
-    debit = tkinter.Entry(main_window)
-    debit.place(relx=0.5,rely=0.4,relwidth=0.6,relheight=0.08,anchor='n')
-    debit.insert(0,35)
-
-
-
 
 def activate():
     frame.pack()
