@@ -7,15 +7,18 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 
+def start():
+    # make variable being globaly
+    global frame, img, main_window
 
-main_window = tkinter.Tk()
-main_window.title('Tugas DTS Kominfo 2022')
-main_window.resizable(0,0)
+    main_window = tkinter.Tk()
+    main_window.title('Tugas DTS Kominfo 2022')
+    main_window.resizable(0,0)
 
-# Virtual plant frame size
-frame = tkinter.Canvas(main_window, bg='#2596be', height=600, width=1000)
-# take Tank.png image
-img = tkinter.PhotoImage(file="img\Tank.png")
+    # Virtual plant frame size
+    frame = tkinter.Canvas(main_window, bg='#2596be', height=600, width=1000)
+    # take Tank.png image
+    img = tkinter.PhotoImage(file="img\Tank.png")
 
 # mose motion function for definding coordinate
 def mouse_motion_coordinate(event):
@@ -114,6 +117,7 @@ def activate():
 
 
 # =========try block========
+start()
 tank()
 graph()
 control_panel()
