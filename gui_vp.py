@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from pip import main
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+from matplotlib.animation import FuncAnimation
 
 def start():
     # make variable being globaly
