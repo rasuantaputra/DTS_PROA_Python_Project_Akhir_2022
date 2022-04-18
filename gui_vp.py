@@ -1,3 +1,4 @@
+from concurrent.futures import process
 import tkinter
 from tkinter.messagebox import YESNOCANCEL
 import numpy as np
@@ -43,6 +44,12 @@ def tank(level=141):
 
 def graph(time, pv):
     
+    # array/list for plot
+    time_x = []
+    time_x.append(time)
+    processValue_y = []
+    processValue_y.append(pv)
+
     # Figure size
     figure = Figure()
     plot1 = figure.add_subplot(111)
@@ -51,7 +58,7 @@ def graph(time, pv):
     plot1.set_title('Response Graph')
     plot1.set_xlabel('time (Sec)')
     plot1.set_ylabel('Process Value (PV)')
-    plot1.plot(time, pv)
+    plot1.plot(time_x, processValue_y)
     # Embedding in canvas
     canvas_graph = tkinter.Canvas(main_window, bg='white')
     canvas_graph.place(x=580,y=1, width=450, height=400)
