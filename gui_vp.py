@@ -8,6 +8,7 @@ from pip import main
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 from matplotlib.animation import FuncAnimation
+from tkinter import ttk
 
 def start():
     # make variable being globaly
@@ -42,31 +43,33 @@ def tank(level=141):
     # frame.create_rectangle(174, level, 383, 518, fill="blue", outline = 'blue')
     frame.create_rectangle(358, 348, 150, level, fill="blue", outline = 'blue')
 
-
 def graph(time, pv):
+    global line, ani, fig
     
     # array/list for plot
-    time_x = []
-    time_x.append(time)
-    processValue_y = []
-    processValue_y.append(pv)
+    time_x = time
+    processValue_y = pv
 
     # Figure size
-    figure = Figure()
-    plot1 = figure.add_subplot(111)
+    fig = plt.Figure()
+
+    # Embedding in canvas
+    canvas_graph = tkinter.Canvas(main_window, bg='white')
+    canvas_graph.place(x=580,y=1, width=450, height=400)
+
+    canvasGrafik = FigureCanvasTkAgg(fig, canvas_graph)
+    canvasGrafik.get_tk_widget().place(relheight=1,relwidth=1)
+    canvasGrafik.draw()
+
+    plot1 = fig.add_subplot(111)
     # Plot graph
     plot1.grid(True)
     plot1.set_title('Response Graph')
     plot1.set_xlabel('time (Sec)')
     plot1.set_ylabel('Process Value (PV)')
-    plot1.plot(time_x, processValue_y)
-    # Embedding in canvas
-    canvas_graph = tkinter.Canvas(main_window, bg='white')
-    canvas_graph.place(x=580,y=1, width=450, height=400)
+    line, = plot1.plot(time_x, processValue_y)
+    # ani = FuncAnimation(fig, animation_function_name, np.arange(1, 2000000), interval=10)
 
-    canvasGrafik = FigureCanvasTkAgg(figure, canvas_graph)
-    canvasGrafik.get_tk_widget().place(relheight=1,relwidth=1)
-    canvasGrafik.draw()
 
 def control_panel():
     frame.create_rectangle(0, 401, 1009, 603 , fill='#074447', outline = '#074447')
@@ -97,7 +100,7 @@ def gravitation_input():
     gravitation.place(x=320,y=472)
     gravitation = tkinter.Entry(main_window)
     gravitation.place(x=479 , y=479)
-    gravitation.insert(0,69)
+    gravitation.insert(0,1)
 
     return gravitation
 
@@ -121,12 +124,24 @@ def tank_area_input():
 
     return tank_area
 
+def set_point_input():
+    # Make proportional controll input
+    set_point = tkinter.Label(bg='#074447', text='Set Point (SP)    :', fg='white', font='sans 16 bold')
+    set_point.place(x=650,y=404)
+    set_point = tkinter.Entry(main_window)
+    set_point.place(x=828 , y=411)
+    set_point.insert(0,69)
+
+    return set_point
+
+
+
 def proportional_input():
     # Make proportional controll input
     proportional = tkinter.Label(bg='#074447', text='Proportional (P) :', fg='white', font='sans 16 bold')
-    proportional.place(x=650,y=404)
+    proportional.place(x=650,y=434)
     proportional = tkinter.Entry(main_window)
-    proportional.place(x=828 , y=411)
+    proportional.place(x=828 , y=441)
     proportional.insert(0,69)
 
     return proportional
@@ -134,9 +149,9 @@ def proportional_input():
 def integral_input():
     # Make integral controll input
     integral = tkinter.Label(bg='#074447', text='Integral (I)           :', fg='white', font='sans 16 bold')
-    integral.place(x=650,y=438)
+    integral.place(x=650,y=468)
     integral = tkinter.Entry(main_window)
-    integral.place(x=828 , y=445)
+    integral.place(x=828 , y=475)
     integral.insert(0,69)
 
     return integral
@@ -144,38 +159,38 @@ def integral_input():
 def derivative_input():
     # Make derivative controll input
     derivative = tkinter.Label(bg='#074447', text='Derivative (D)     :', fg='white', font='sans 16 bold')
-    derivative.place(x=650,y=472)
+    derivative.place(x=650,y=502)
     derivative = tkinter.Entry(main_window)
-    derivative.place(x=828 , y=479)
+    derivative.place(x=828 , y=509)
     derivative.insert(0,69)
 
     return derivative
 
-def start_button():
+def start_button(function):
     # Make start button
-    start_button = tkinter.Button(main_window, text='Start', font='sans 16 bold')
+    start_button = tkinter.Button(main_window, text='Start', font='sans 16 bold', command=function)
+    start_button.pack()
     start_button.place(x=163 , y=408,relwidth=0.3,relheight=0.1,anchor='n')
+ 
 
-    return start_button
-
-def pause_button():
+def pause_button(function):
     # Make pause button
-    pause_button = tkinter.Button(main_window, text='Pause', font='sans 16 bold')
+    pause_button = tkinter.Button(main_window, text='Pause', font='sans 16 bold', command=function)
+    pause_button.pack()
     pause_button.place(x=163 , y=473,relwidth=0.3,relheight=0.1,anchor='n')
 
-    return pause_button
-
-def reset_button():
+def reset_button(function):
     # Make reset button
-    reset_button = tkinter.Button(main_window, text='Reset', font='sans 16 bold')
+    reset_button = tkinter.Button(main_window, text='Reset', font='sans 16 bold', command=function)
+    reset_button.pack()
     reset_button.place(x=163 , y=538,relwidth=0.3,relheight=0.1,anchor='n')
 
     return reset_button
 
-def tunning_button():
+def tunning_button(function):
     # Make tunnig button
-    tunning_button = tkinter.Button(main_window, text='Tune', font='sans 16 bold')
-    tunning_button.place(x=803 , y=510,relwidth=0.3,relheight=0.1,anchor='n')
+    tunning_button = tkinter.Button(main_window, text='Tune', font='sans 16 bold', command=function)
+    tunning_button.place(x=803 , y=535,relwidth=0.3,relheight=0.1,anchor='n')
 
     return tunning_button
 
@@ -184,7 +199,7 @@ def tunning_button():
 def activate():
     frame.pack()
     # Activate mouse corrdinate
-    main_window.bind('<Motion>', mouse_motion_coordinate)
+    # main_window.bind('<Motion>', mouse_motion_coordinate)
     main_window.mainloop()
 
 
