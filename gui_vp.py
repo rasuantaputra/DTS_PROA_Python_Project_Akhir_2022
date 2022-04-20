@@ -79,8 +79,8 @@ def debit_input():
     debit = tkinter.Label(bg='#074447', text='Debit Input      :', fg='white', font='sans 16 bold')
     debit.place(x=320,y=404)
     debit = tkinter.Entry(main_window)
+    debit.pack()
     debit.place(x=479 , y=411)
-    debit.insert(0,69)
 
     return debit
 
@@ -99,8 +99,8 @@ def gravitation_input():
     gravitation = tkinter.Label(bg='#074447', text='Gravitation     :', fg='white', font='sans 16 bold')
     gravitation.place(x=320,y=472)
     gravitation = tkinter.Entry(main_window)
+    gravitation.pack()
     gravitation.place(x=479 , y=479)
-    gravitation.insert(0,1)
 
     return gravitation
 
@@ -109,7 +109,8 @@ def valve1_area_input():
     valve1_area = tkinter.Label(bg='#074447', text='Valve 1 D        :', fg='white', font='sans 16 bold')
     valve1_area.place(x=320,y=506)
     valve1_area = tkinter.Entry(main_window)
-    valve1_area = tkinter.Spinbox(main_window, values=(10, 20, 30, 40, 50, 60, 70, 80, 90, 100))
+    valve1_area = tkinter.Spinbox(main_window, values=(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100))
+    valve1_area.pack()
     valve1_area.place(x=479 , y=513)
 
     return valve1_area
@@ -119,8 +120,8 @@ def tank_area_input():
     tank_area = tkinter.Label(bg='#074447', text='Tank Area      :', fg='white', font='sans 16 bold')
     tank_area.place(x=320,y=540)
     tank_area = tkinter.Entry(main_window)
+    tank_area.pack()
     tank_area.place(x=479 , y=547)
-    tank_area.insert(0,69)
 
     return tank_area
 
@@ -129,8 +130,8 @@ def set_point_input():
     set_point = tkinter.Label(bg='#074447', text='Set Point (SP)    :', fg='white', font='sans 16 bold')
     set_point.place(x=650,y=404)
     set_point = tkinter.Entry(main_window)
+    set_point.pack()
     set_point.place(x=828 , y=411)
-    set_point.insert(0,69)
 
     return set_point
 
@@ -141,8 +142,8 @@ def proportional_input():
     proportional = tkinter.Label(bg='#074447', text='Proportional (P) :', fg='white', font='sans 16 bold')
     proportional.place(x=650,y=434)
     proportional = tkinter.Entry(main_window)
+    proportional.pack()
     proportional.place(x=828 , y=441)
-    proportional.insert(0,69)
 
     return proportional
 
@@ -151,8 +152,8 @@ def integral_input():
     integral = tkinter.Label(bg='#074447', text='Integral (I)           :', fg='white', font='sans 16 bold')
     integral.place(x=650,y=468)
     integral = tkinter.Entry(main_window)
+    integral.pack()
     integral.place(x=828 , y=475)
-    integral.insert(0,69)
 
     return integral
 
@@ -161,8 +162,8 @@ def derivative_input():
     derivative = tkinter.Label(bg='#074447', text='Derivative (D)     :', fg='white', font='sans 16 bold')
     derivative.place(x=650,y=502)
     derivative = tkinter.Entry(main_window)
+    derivative.pack()
     derivative.place(x=828 , y=509)
-    derivative.insert(0,69)
 
     return derivative
 
