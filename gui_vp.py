@@ -78,7 +78,8 @@ def debit_input():
     # Make entry debit
     debit = tkinter.Label(bg='#074447', text='Debit Input      :', fg='white', font='sans 16 bold')
     debit.place(x=320,y=404)
-    debit = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=0.5)
+    debit = tkinter.Entry(main_window,textvariable=val)
     debit.pack()
     debit.place(x=479 , y=411)
 
@@ -88,9 +89,10 @@ def maximum_liquid_lvl_input():
     # Make entry maximum lvl
     maximum_liquid_lvl = tkinter.Label(bg='#074447', text='Max Liquid lvl :', fg='white', font='sans 16 bold')
     maximum_liquid_lvl.place(x=320,y=438)
-    maximum_liquid_lvl = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=1)
+    maximum_liquid_lvl = tkinter.Entry(main_window,textvariable=val)
+    maximum_liquid_lvl.pack()
     maximum_liquid_lvl.place(x=479 , y=445)
-    maximum_liquid_lvl.insert(0,69)
 
     return maximum_liquid_lvl
 
@@ -98,7 +100,8 @@ def gravitation_input():
     # Make entry gravitation
     gravitation = tkinter.Label(bg='#074447', text='Gravitation     :', fg='white', font='sans 16 bold')
     gravitation.place(x=320,y=472)
-    gravitation = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=9.78)
+    gravitation = tkinter.Entry(main_window,textvariable=val)
     gravitation.pack()
     gravitation.place(x=479 , y=479)
 
@@ -109,7 +112,7 @@ def valve1_area_input():
     valve1_area = tkinter.Label(bg='#074447', text='Valve 1 D        :', fg='white', font='sans 16 bold')
     valve1_area.place(x=320,y=506)
     valve1_area = tkinter.Entry(main_window)
-    valve1_area = tkinter.Spinbox(main_window, values=(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100))
+    valve1_area = tkinter.Spinbox(main_window, from_=0, to=10, width=18)
     valve1_area.pack()
     valve1_area.place(x=479 , y=513)
 
@@ -119,7 +122,8 @@ def tank_area_input():
     # Make tank area diameter
     tank_area = tkinter.Label(bg='#074447', text='Tank Area      :', fg='white', font='sans 16 bold')
     tank_area.place(x=320,y=540)
-    tank_area = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=0.7)
+    tank_area = tkinter.Entry(main_window,textvariable=val)
     tank_area.pack()
     tank_area.place(x=479 , y=547)
 
@@ -134,8 +138,6 @@ def set_point_input():
     set_point.place(x=828 , y=411)
 
     return set_point
-
-
 
 def proportional_input():
     # Make proportional controll input
