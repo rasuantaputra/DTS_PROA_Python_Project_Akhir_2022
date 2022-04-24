@@ -19,7 +19,7 @@ def start():
     main_window.resizable(0,0)
 
     # Virtual plant frame size
-    frame = tkinter.Canvas(main_window, bg='#2596be', height=660, width=1000)
+    frame = tkinter.Canvas(main_window, bg='#2596be', height=680, width=1000)
     # take Tank.png image
     img = tkinter.PhotoImage(file="img\Tank.png")
 
@@ -72,7 +72,7 @@ def graph(time, pv):
 
 
 def control_panel():
-    frame.create_rectangle(0, 401, 1009, 660 , fill='#074447', outline = '#074447')
+    frame.create_rectangle(0, 401, 1009, 680 , fill='#074447', outline = '#074447')
 
 def debit_input():
     # Make entry debit
@@ -151,17 +151,14 @@ def sampling_time_input():
 
     return sampling_time
 
-
-
-
 def tank_area_input():
     # Make tank area diameter
     tank_area = tkinter.Label(bg='#074447', text='Tank Area      :', fg='white', font='sans 16 bold')
-    tank_area.place(x=320,y=540)
+    tank_area.place(x=320,y=642)
     val = tkinter.StringVar(main_window, value=0.7)
     tank_area = tkinter.Entry(main_window,textvariable=val)
     tank_area.pack()
-    tank_area.place(x=479 , y=547)
+    tank_area.place(x=479 , y=649)
 
     return tank_area
 
@@ -209,20 +206,20 @@ def start_button(function):
     # Make start button
     start_button = tkinter.Button(main_window, text='Start', font='sans 16 bold', command=function)
     start_button.pack()
-    start_button.place(x=163 , y=408,relwidth=0.3,relheight=0.1,anchor='n')
+    start_button.place(x=163 , y=428,relwidth=0.3,relheight=0.1,anchor='n')
  
 
 def pause_button(function):
     # Make pause button
     pause_button = tkinter.Button(main_window, text='Pause', font='sans 16 bold', command=function)
     pause_button.pack()
-    pause_button.place(x=163 , y=473,relwidth=0.3,relheight=0.1,anchor='n')
+    pause_button.place(x=163 , y=500,relwidth=0.3,relheight=0.1,anchor='n')
 
 def reset_button(function):
     # Make reset button
     reset_button = tkinter.Button(main_window, text='Reset', font='sans 16 bold', command=function)
     reset_button.pack()
-    reset_button.place(x=163 , y=538,relwidth=0.3,relheight=0.1,anchor='n')
+    reset_button.place(x=163 , y=572,relwidth=0.3,relheight=0.1,anchor='n')
 
     return reset_button
 
@@ -233,12 +230,20 @@ def tunning_button(function):
 
     return tunning_button
 
+def save_button(function):
+    # Make tunnig button
+    save_button = tkinter.Button(main_window, text='Save', font='sans 16 bold', command=function)
+    save_button.place(x=803 , y=608,relwidth=0.3,relheight=0.1,anchor='n')
+
+    return tunning_button
+
+
 
 
 def activate():
     frame.pack()
     # Activate mouse corrdinate
-    main_window.bind('<Motion>', mouse_motion_coordinate)
+    # main_window.bind('<Motion>', mouse_motion_coordinate)
     main_window.mainloop()
 
 

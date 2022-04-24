@@ -22,7 +22,7 @@ constants = (
     pipe1_area_input(),
     pipe2_area_input(),
     sampling_time_input(),
-    # tank_area_input()
+    tank_area_input()
 )
 
 pid_control = (
@@ -173,9 +173,12 @@ def on_reset():
     time.clear()
     pv.clear()
 
+def on_save():
+    return None
 start_button(on_start)
 pause_button(on_stop)
 reset_button(on_reset)
+save_button()
 
 control_panel()
 activate()
