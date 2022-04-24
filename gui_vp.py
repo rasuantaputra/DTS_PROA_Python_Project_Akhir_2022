@@ -19,7 +19,7 @@ def start():
     main_window.resizable(0,0)
 
     # Virtual plant frame size
-    frame = tkinter.Canvas(main_window, bg='#2596be', height=600, width=1000)
+    frame = tkinter.Canvas(main_window, bg='#2596be', height=660, width=1000)
     # take Tank.png image
     img = tkinter.PhotoImage(file="img\Tank.png")
 
@@ -72,7 +72,7 @@ def graph(time, pv):
 
 
 def control_panel():
-    frame.create_rectangle(0, 401, 1009, 603 , fill='#074447', outline = '#074447')
+    frame.create_rectangle(0, 401, 1009, 660 , fill='#074447', outline = '#074447')
 
 def debit_input():
     # Make entry debit
@@ -108,7 +108,7 @@ def gravitation_input():
     return gravitation
 
 def valve1_area_input():
-    # Make entry q1 pipe diameter
+    # Make entry q1 valve diameter
     valve1_area = tkinter.Label(bg='#074447', text='Valve 1 D        :', fg='white', font='sans 16 bold')
     valve1_area.place(x=320,y=506)
     valve1_area = tkinter.Entry(main_window)
@@ -117,6 +117,42 @@ def valve1_area_input():
     valve1_area.place(x=479 , y=513)
 
     return valve1_area
+
+def pipe1_area_input():
+    # Make entry q1 pipe diameter
+    pipe1_area = tkinter.Label(bg='#074447', text='Pipe 1 D          :', fg='white', font='sans 16 bold')
+    pipe1_area.place(x=320,y=540)
+    val = tkinter.StringVar(main_window, value=0.02)
+    pipe1_area = tkinter.Entry(main_window,textvariable=val)
+    pipe1_area.pack()
+    pipe1_area.place(x=479 , y=547)
+
+    return pipe1_area
+
+def pipe2_area_input():
+    # Make entry q2 pipe diameter
+    pipe2_area = tkinter.Label(bg='#074447', text='Pipe 2 D          :', fg='white', font='sans 16 bold')
+    pipe2_area.place(x=320,y=574)
+    val = tkinter.StringVar(main_window, value=0.02)
+    pipe2_area = tkinter.Entry(main_window,textvariable=val)
+    pipe2_area.pack()
+    pipe2_area.place(x=479 , y=581)
+
+    return pipe2_area
+
+def sampling_time_input():
+    # Make entry sampling time
+    sampling_time = tkinter.Label(bg='#074447', text='Sampling (t)    :', fg='white', font='sans 16 bold')
+    sampling_time.place(x=320,y=608)
+    val = tkinter.StringVar(main_window, value=0.1)
+    sampling_time = tkinter.Entry(main_window,textvariable=val)
+    sampling_time.pack()
+    sampling_time.place(x=479 , y=615)
+
+    return sampling_time
+
+
+
 
 def tank_area_input():
     # Make tank area diameter
@@ -202,7 +238,7 @@ def tunning_button(function):
 def activate():
     frame.pack()
     # Activate mouse corrdinate
-    # main_window.bind('<Motion>', mouse_motion_coordinate)
+    main_window.bind('<Motion>', mouse_motion_coordinate)
     main_window.mainloop()
 
 
