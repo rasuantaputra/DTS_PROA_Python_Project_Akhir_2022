@@ -112,7 +112,7 @@ def valve1_area_input():
     valve1_area = tkinter.Label(bg='#074447', text='Valve 1 D        :', fg='white', font='sans 16 bold')
     valve1_area.place(x=320,y=506)
     valve1_area = tkinter.Entry(main_window)
-    valve1_area = tkinter.Spinbox(main_window, from_=0, to=10, width=18)
+    valve1_area = tkinter.Spinbox(main_window, from_=0, to=100, increment=10, width=18)
     valve1_area.pack()
     valve1_area.place(x=479 , y=513)
 
