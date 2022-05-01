@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\Belajar\Digital Talent Schoolarship\PROA Python 2022\Tugas\Proyek Akhir\PROA Python Project Akhir"
+VIRTUAL_ENV="D:\Belajar\Digital Talent Schoolarship\PROA Python 2022\Tugas\Proyek Akhir\DTS_PROA_Python_Project_Akhir_2022"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=D:\Belajar\Digital Talent Schoolarship\PROA Python 2022\Tugas\Proyek Akhir\DTS_PROA_Python_Project_Akhir
+set VIRTUAL_ENV=D:\Belajar\Digital Talent Schoolarship\PROA Python 2022\Tugas\Proyek Akhir\DTS_PROA_Python_Project_Akhir_2022
 
 if not defined PROMPT set PROMPT=$P$G
 
