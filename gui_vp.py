@@ -4,6 +4,7 @@ from tkinter.messagebox import YESNOCANCEL
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import pandas as pd
 
 from pip import main
 from matplotlib.figure import Figure
