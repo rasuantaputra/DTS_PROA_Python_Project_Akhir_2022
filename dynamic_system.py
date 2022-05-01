@@ -9,6 +9,7 @@ from time import process_time
 from timeit import repeat
 from wsgiref import handlers
 from gui_vp import *
+import csv
 
 # =======tuning=========
 # gravitation = tkinter.Entry(main_window)
@@ -150,28 +151,23 @@ tunning_button(on_tuning)
 
 # liquid_animation = 344 * (1 - h)
 
-def awal():
+def tank_animation():
     global h
     liquid_animation = 344 - (185 * h)
     tank(liquid_animation)
     # frame.after(10, awal)
 
 # =============================
-# =========Graph animation==========
-
-# =============================
-# ====start, paused, reset=====
+# ====start, paused, reset, save=====
 running = False
 flag = True
-
-
 
 def start_app():
    global h
    if running:
       pid_controller(set_point, kp, ki, kd)
       count()
-      awal()
+      tank_animation()
       graph(time, pv)
     
   
@@ -180,7 +176,7 @@ def start_app():
 if flag:    
     pid_controller(set_point, kp, ki, kd)
     count()
-    awal()
+    tank_animation()
     graph(time, pv)
     
 
@@ -203,7 +199,14 @@ def on_reset():
     pv.clear()
 
 def on_save():
-    return None
+    filename = asksaveasfilename(filetype=[('CSV files', '*.csv')])
+    if filename:
+        data = {'Time': time, 'PV': pv}
+
+        df = pd.DataFrame(data)
+        #df.to_csv(filename, header=False, index=False)
+        df.to_csv(filename, index=False)
+
 
 start_button(on_start)
 pause_button(on_stop)
