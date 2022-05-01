@@ -3,6 +3,7 @@ import tkinter
 from tkinter.messagebox import YESNOCANCEL
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 from pip import main
 from matplotlib.figure import Figure
@@ -67,7 +68,7 @@ def graph(time, pv):
     plot1.set_title('Response Graph')
     plot1.set_xlabel('time (Sec)')
     plot1.set_ylabel('Process Value (PV)')
-    line, = plot1.plot(time_x, processValue_y)
+    plot1.plot(time_x, processValue_y, color='blue')
     # ani = FuncAnimation(fig, animation_function_name, np.arange(1, 2000000), interval=10)
 
 
@@ -111,8 +112,8 @@ def valve1_area_input():
     # Make entry q1 valve diameter
     valve1_area = tkinter.Label(bg='#074447', text='Valve 1 D        :', fg='white', font='sans 16 bold')
     valve1_area.place(x=320,y=506)
-    valve1_area = tkinter.Entry(main_window)
-    valve1_area = tkinter.Spinbox(main_window, from_=0, to=100, increment=10, width=18)
+    val = tkinter.StringVar(main_window, value=50)
+    valve1_area = tkinter.Spinbox(main_window,textvariable=val, from_=0, to=100, increment=10, width=18)
     valve1_area.pack()
     valve1_area.place(x=479 , y=513)
 
@@ -155,7 +156,7 @@ def tank_area_input():
     # Make tank area diameter
     tank_area = tkinter.Label(bg='#074447', text='Tank Area      :', fg='white', font='sans 16 bold')
     tank_area.place(x=320,y=642)
-    val = tkinter.StringVar(main_window, value=0.7)
+    val = tkinter.StringVar(main_window, value=2)
     tank_area = tkinter.Entry(main_window,textvariable=val)
     tank_area.pack()
     tank_area.place(x=479 , y=649)
@@ -166,7 +167,8 @@ def set_point_input():
     # Make proportional controll input
     set_point = tkinter.Label(bg='#074447', text='Set Point (SP)    :', fg='white', font='sans 16 bold')
     set_point.place(x=650,y=404)
-    set_point = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=0.7)
+    set_point = tkinter.Entry(main_window,textvariable=val)
     set_point.pack()
     set_point.place(x=828 , y=411)
 
@@ -176,7 +178,8 @@ def proportional_input():
     # Make proportional controll input
     proportional = tkinter.Label(bg='#074447', text='Proportional (P) :', fg='white', font='sans 16 bold')
     proportional.place(x=650,y=434)
-    proportional = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=0)
+    proportional = tkinter.Entry(main_window,textvariable=val)
     proportional.pack()
     proportional.place(x=828 , y=441)
 
@@ -186,7 +189,8 @@ def integral_input():
     # Make integral controll input
     integral = tkinter.Label(bg='#074447', text='Integral (I)           :', fg='white', font='sans 16 bold')
     integral.place(x=650,y=468)
-    integral = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=0)
+    integral = tkinter.Entry(main_window,textvariable=val)
     integral.pack()
     integral.place(x=828 , y=475)
 
@@ -196,7 +200,8 @@ def derivative_input():
     # Make derivative controll input
     derivative = tkinter.Label(bg='#074447', text='Derivative (D)     :', fg='white', font='sans 16 bold')
     derivative.place(x=650,y=502)
-    derivative = tkinter.Entry(main_window)
+    val = tkinter.StringVar(main_window, value=0)
+    derivative = tkinter.Entry(main_window,textvariable=val)
     derivative.pack()
     derivative.place(x=828 , y=509)
 
