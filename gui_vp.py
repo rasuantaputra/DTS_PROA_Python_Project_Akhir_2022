@@ -18,7 +18,7 @@ def start():
     global frame, img, main_window
 
     main_window = tkinter.Tk()
-    main_window.title('Tugas DTS Kominfo 2022')
+    main_window.title('Tugas Akhir DTS Kominfo 2022')
     main_window.resizable(0,0)
 
     # Virtual plant frame size
