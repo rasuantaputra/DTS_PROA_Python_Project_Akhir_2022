@@ -11,6 +11,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 from matplotlib.animation import FuncAnimation
 from tkinter import ttk
+from tkinter.filedialog import asksaveasfilename
 
 def start():
     # make variable being globaly
